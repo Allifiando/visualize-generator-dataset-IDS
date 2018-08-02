@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1 Snort  
+  table.table.table-striped
+   tr
+    th no
+    th timestamp
+    th Destination IP
+    th Destination Port
+    th Source Port
+    th Source IP
+    th Alert Snort
+   each dd,i in data
+    tr
+     td= i+1
+     td= dd.ts_snort
+     td= dd.dst_ip
+     td= dd.dst_port
+     td= dd.src_port
+     td= dd.src_ip     
+     td= dd.label

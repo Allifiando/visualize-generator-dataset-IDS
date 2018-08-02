@@ -1,0 +1,62 @@
+extends layout
+
+block content
+  h1 Log Bro
+  table.table.table-striped
+   tr
+    th no    
+    th id_orig_h
+    th id_resp_h   
+    th history
+    th duration 
+    th orig_pkts
+    th orig_ip_bytes
+    th resp_pkts
+    th resp_ip_bytes
+    th PX
+    th NNP 
+    th NSP   
+    th PSP
+    th IOPR
+    th Reconnect 
+    th FPS
+    th TBT
+    th APL    
+    th PPS
+   each dd,i in data       
+    tr
+     td= i+1     
+     td= dd.id_orig_h
+     td= dd.id_resp_h
+     td= dd.history    
+     td= dd.duration
+     td= dd.orig_pkts
+     td= dd.orig_ip_bytes
+     td= dd.resp_pkts
+     td= dd.resp_ip_bytes        
+     td= dd.px
+     if dd.nnp == 0
+      td= 1
+     else
+      td= 0
+     if dd.nnp >= 63 && dd.nnp <= 400
+      td= 1
+     else
+      td= 0     
+     if dd.nnp >= 63 && dd.nnp <= 400
+      td= 1 / dd.px
+     else
+      td= 0 / dd.px     
+     td= dd.orig_pkts / dd.resp_pkts
+     if dd.history == 'ShADadfFr'
+      td= 1
+     else 
+      td= 0 
+     td= dd.orig_ip_bytes / dd.orig_pkts
+     td= dd.tbt
+     td= (dd.orig_ip_bytes + dd.resp_ip_bytes) / dd.px     
+     td= dd.px / dd.duration
+     
+
+
+     

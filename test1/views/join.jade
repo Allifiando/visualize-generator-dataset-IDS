@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1 Join Bro Snort
+  table.table.table-striped
+   tr
+    th no
+    th ts
+    th uid
+    th id_orig_h
+    th id_orig_p
+    th id_resp_h
+    th id_resp_p
+    th label     
+   each dd,i in data
+    tr
+     td= i+1
+     td= dd.ts
+     td= dd.uid
+     td= dd.id_orig_h
+     td= dd.id_orig_p
+     td= dd.id_resp_h
+     td= dd.id_resp_p 
+     if dd.tsDetail.length != 0     
+      each lb in dd.tsDetail
+       td= lb.label
+     else      
+      td= "BENIGN"     

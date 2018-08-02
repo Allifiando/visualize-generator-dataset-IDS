@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1 Count Label  
+  table.table.table-striped   
+   tr
+    th no
+    th timestamp
+    th Destination IP
+    th Destination Port
+    th Source Port
+    th Source IP
+    th Alert Snort
+    th count    
+   each dd,i in data    
+    tr
+     td= i+1
+     td= dd.ts_snort
+     td= dd.dst_ip
+     td= dd.dst_port
+     td= dd.src_port
+     td= dd.src_ip     
+     td= dd.label     
+     td= dd.totalcount    
+   tr
+    td 21
+    td 2018-07-25 03:03:22 
+    td 192.168.1.121
+    td 80
+    td 3130
+    td 68.179.222.100
+    td BENIGN
+    td 564139    

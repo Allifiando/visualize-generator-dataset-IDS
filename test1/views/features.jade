@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  h1 Features Botnet
+  table.table.table-striped
+   tr
+    th no
+    th ts
+    th id_orig_h
+    th id_resp_h   
+    th history
+    th duration 
+    th orig_pkts
+    th orig_ip_bytes
+    th resp_pkts
+    th resp_ip_bytes    
+    th DPL
+    th PV
+    th BS
+    th PS 
+    th AIT    
+   each dd,i in data    
+    - var tbt = dd.orig_ip_bytes + dd.resp_ip_bytes  
+    - var apl = tbt / px
+    - var dpl = dd.totalrow / (dd.totalorigpaket + dd.totalresppaket)
+    - var pv = (Math.sqrt(1/dd.totalrow)*((tbt-apl)^2))
+    - var bs = (tbt * 8) / dd.duration
+    - var ps = (dd.totalorigpaket + dd.totalresppaket) / dd.duration
+    - var ait = (dd.totalorigpaket + dd.totalresppaket)- (dd.maxduration-dd.minduration)    
+    tr
+     td= i+1
+     td= dd.timestamp
+     td= dd.id_orig_h
+     td= dd.id_resp_h
+     td= dd.history    
+     td= dd.duration
+     td= dd.orig_pkts
+     td= dd.orig_ip_bytes
+     td= dd.resp_pkts
+     td= dd.resp_ip_bytes            
+     td= dpl
+     td= pv
+     td= bs
+     td= ps
+     td= ait     
+     
+
+
+     

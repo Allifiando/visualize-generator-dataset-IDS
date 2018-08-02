@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1 Count Host 
+  table.table.table-striped
+   tr
+    th no
+    th timestamp
+    th Destination IP
+    th Destination Port
+    th Source Port
+    th Source IP
+    th Alert Snort
+    th count
+   each dd,i in data
+    tr
+     td= i+1
+     td= dd.ts
+     td= dd.id_orig_h
+     td= dd.id_resp_h
+     td= dd.orig_ip_bytes
+     td= dd.resp_ip_bytes        
+     td= dd.totalcount
